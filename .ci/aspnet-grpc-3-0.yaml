@@ -17,6 +17,5 @@ steps:
       containerRegistry: 'Docker Hub'
       repository: 'alefcarlos/aspnet-grpc'
       command: 'buildAndPush'
-      Dockerfile: '3-0.Dockerfile'
-      buildContext: '$(Build.SourcesDirectory)/aspnet/grpc/'
+      Dockerfile: '$(Build.SourcesDirectory)/aspnet/grpc/3-0.Dockerfile'
       tags: '3.0'
