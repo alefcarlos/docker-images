@@ -1,0 +1,12 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - README.md
+    include:
+      - aspnet/grpc/3-0.Dockerfile
+
+pool:
+  vmImage: "ubuntu-latest"
