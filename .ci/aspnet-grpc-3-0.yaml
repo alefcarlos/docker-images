@@ -18,5 +18,5 @@ steps:
       repository: 'alefcarlos/aspnet-grpc'
       command: 'buildAndPush'
       Dockerfile: '3-0.Dockerfile'
-      buildContext: 'aspnet/grpc/'
+      buildContext: '$(Build.SourcesDirectory)/aspnet/grpc/'
       tags: '3.0'
