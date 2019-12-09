@@ -14,7 +14,7 @@ pool:
 steps:
   - task: Docker@2
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-    displayName: "Docker Login Canister.io"
+    displayName: "Docker Login Docker Hub"
     inputs:
       containerRegistry: 'Docker Hub'
       command: 'login'
