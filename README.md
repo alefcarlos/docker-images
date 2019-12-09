@@ -1,6 +1,6 @@
 # Set of Docker images
 
-## Aspnet grpc
+## ASP.NET grpc
 
 | Image | tag | build status |
 | ----- | ---- | -----------|
