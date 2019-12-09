@@ -11,6 +11,10 @@ trigger:
 pool:
   vmImage: "ubuntu-latest"
 
+variables:
+  tags: '3.0'
+  repository: 'alefcarlos/aspnet-grpc'
+
 steps:
   - task: Docker@2
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
@@ -22,7 +26,7 @@ steps:
   - task: Docker@2
     inputs:
       containerRegistry: 'Docker Hub'
-      repository: 'alefcarlos/aspnet-grpc'
+      repository: $(repository)
       command: 'buildAndPush'
       Dockerfile: '$(Build.SourcesDirectory)/aspnet/grpc/3-0.Dockerfile'
-      tags: '3.0'
+      tags: $(tags)
