@@ -1,0 +1,21 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - README.md
+    include:
+      - aspnet/grpc/3-0-cli.Dockerfile
+
+pool:
+  vmImage: "ubuntu-latest"
+
+steps:
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'Docker Hub'
+      repository: 'alefcarlos/aspnet-grpc'
+      command: 'buildAndPush'
+      Dockerfile: '$(Build.SourcesDirectory)/aspnet/grpc/3-0-cli.Dockerfile'
+      tags: '3.0'

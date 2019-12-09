@@ -13,6 +13,13 @@ pool:
 
 steps:
   - task: Docker@2
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    displayName: "Docker Login Canister.io"
+    inputs:
+      containerRegistry: 'Docker Hub'
+      command: 'login'
+
+  - task: Docker@2
     inputs:
       containerRegistry: 'Docker Hub'
       repository: 'alefcarlos/aspnet-grpc'

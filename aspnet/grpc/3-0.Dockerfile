@@ -1,23 +1,4 @@
-## grpc_cli
-FROM python:2 as grpc_cli
-
-RUN pip install grpcio --ignore-installed && \
-    pip install grpcio-tools && \
-    apt update -y && \
-    apt install -y build-essential autoconf libtool pkg-config && \
-    apt install -y libgflags-dev libgtest-dev && \
-    git clone https://github.com/grpc/grpc.git && \
-    cd grpc && \
-	git submodule update --init && \
-    make grpc_cli && \
-	cp /grpc/bins/opt/grpc_cli /usr/local/bin/ && \
-	cd ../ && rm -rf grpc
-
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
-
-## grpc_cli
-COPY --from=grpc_cli /usr/local/bin/grpc_cli /bin/
-RUN chmod +x /bin/grpc_cli
 
 ## Health prob
 RUN apt-get update -y && apt-get install wget -y && \
