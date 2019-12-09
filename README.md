@@ -1,0 +1,1 @@
+[![Build Status](https://dev.azure.com/alefcarlos/PlusUltra/_apis/build/status/alefcarlos.docker-images.grpc.3.cli?branchName=master)](https://dev.azure.com/alefcarlos/PlusUltra/_build/latest?definitionId=18&branchName=master)
