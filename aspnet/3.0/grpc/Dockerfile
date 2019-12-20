@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
+FROM alefcarlos/aspnet:3.0-tools
 
 ## Health prob
 RUN apt-get update -y && apt-get install wget -y && \

@@ -6,7 +6,7 @@ trigger:
     exclude:
       - README.md
     include:
-      - aspnet/grpc/3-0.Dockerfile
+      - aspnet/grpc/3.0/Dockerfile
 
 pool:
   vmImage: "ubuntu-latest"
@@ -28,5 +28,5 @@ steps:
       containerRegistry: 'Docker Hub'
       repository: $(repository)
       command: 'buildAndPush'
-      Dockerfile: '$(Build.SourcesDirectory)/aspnet/grpc/3-0.Dockerfile'
+      Dockerfile: '$(Build.SourcesDirectory)/aspnet/grpc/3.0/Dockerfile'
       tags: $(tags)

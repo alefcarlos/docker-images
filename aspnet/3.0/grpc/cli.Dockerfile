@@ -13,7 +13,7 @@ RUN pip install grpcio --ignore-installed && \
 	cp /grpc/bins/opt/grpc_cli /usr/local/bin/ && \
 	cd ../ && rm -rf grpc
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
+FROM alefcarlos/aspnet:3.0-tools
 
 ## grpc_cli
 COPY --from=grpc_cli /usr/local/bin/grpc_cli /bin/
