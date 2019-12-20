@@ -6,7 +6,7 @@ trigger:
     exclude:
       - README.md
     include:
-      - aspnet/grpc/3.0/cli.Dockerfile
+      - aspnet/3.0/grpc/cli.Dockerfile
 
 pool:
   vmImage: "ubuntu-latest"
