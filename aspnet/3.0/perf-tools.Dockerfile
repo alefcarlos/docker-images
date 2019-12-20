@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 as builder
 
 RUN dotnet tool install --global dotnet-trace
 RUN dotnet tool install --global dotnet-counters
