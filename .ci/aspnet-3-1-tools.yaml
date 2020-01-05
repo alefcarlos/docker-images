@@ -28,5 +28,5 @@ steps:
       containerRegistry: 'Docker Hub'
       repository: $(repository)
       command: 'buildAndPush'
-      Dockerfile: '$(Build.SourcesDirectory)/aspnet/3.0/perf-tools.Dockerfile'
+      Dockerfile: '$(Build.SourcesDirectory)/aspnet/3.1/perf-tools.Dockerfile'
       tags: $(tags)
