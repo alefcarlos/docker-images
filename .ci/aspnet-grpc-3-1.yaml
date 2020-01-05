@@ -1,0 +1,32 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - README.md
+    include:
+      - aspnet/3.1/grpc/Dockerfile
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  tags: '3.1'
+  repository: 'alefcarlos/aspnet-grpc'
+
+steps:
+  - task: Docker@2
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    displayName: "Docker Login Docker Hub"
+    inputs:
+      containerRegistry: 'Docker Hub'
+      command: 'login'
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'Docker Hub'
+      repository: $(repository)
+      command: 'buildAndPush'
+      Dockerfile: '$(Build.SourcesDirectory)/aspnet/3.0/grpc/Dockerfile'
+      tags: $(tags)

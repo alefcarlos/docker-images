@@ -1,0 +1,32 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - README.md
+    include:
+      - aspnet/3.1/perf-tools.Dockerfile
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  tags: '3.1-tools'
+  repository: 'alefcarlos/aspnet'
+
+steps:
+  - task: Docker@2
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    displayName: "Docker Login Docker Hub"
+    inputs:
+      containerRegistry: 'Docker Hub'
+      command: 'login'
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'Docker Hub'
+      repository: $(repository)
+      command: 'buildAndPush'
+      Dockerfile: '$(Build.SourcesDirectory)/aspnet/3.0/perf-tools.Dockerfile'
+      tags: $(tags)
